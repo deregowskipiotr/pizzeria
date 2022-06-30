@@ -63,7 +63,7 @@
       console.log('new Product:', thisProduct);
       
     }
-  }
+  
       
     
     renderInMenu(){
@@ -108,22 +108,20 @@
         thisProduct.element.classList.toggle('active');
       });
     }
-    
+  }  
 
 
   const app = {
     initMenu: function(){
       const thisApp = this;
+
       console.log('thisapp.data:', thisApp.data);
 
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
       }
-
-
-      const testProduct = new Product();
-      console.log('testProduct:', testProduct);
     },
+
 
     initData: function(){
       const thisApp = this;
