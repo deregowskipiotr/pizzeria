@@ -86,7 +86,7 @@
     // CODE ADDED END
   };
 
-  
+
   class Product{
     constructor(id, data){
       const thisProduct = this;
@@ -273,7 +273,7 @@
 
       /* TODO: Add validation */
 
-      if(thisWidget.value !== newValue && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin -1 && newValue <= settings.amountWidget.defaultMax +1) {
+      if(thisWidget.value !== newValue && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin -1 && newValue <= settings.amountWidget.defaultMax +1 ) {
         thisWidget.value = newValue;
       }
       thisWidget.input.value = thisWidget.value;
@@ -315,7 +315,8 @@
       thisCart.products = [];
 
       thisCart.getElements(element);
-      console.log('new cart', thisCart);
+      thisCart.initActions();
+      //console.log('new Cart', thisCart);
     }
 
     getElements(element) {
@@ -325,8 +326,17 @@
 
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+
     }
 
+    initActions() {
+      const thisCart = this;
+
+      thisCart.dom.toggleTrigger.addEventListener('click', function() {
+        thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+      });
+
+    }  
     
   }
 
@@ -355,6 +365,8 @@
       thisApp.cart = new Cart(cartElem);
     },
 
+    
+
     init: function(){
       const thisApp = this;
       console.log('*** App starting ***');
@@ -366,11 +378,12 @@
 
       thisApp.initData();
       thisApp.initMenu();
-
+      thisApp.initCart();
     },
   };
 
   
 
   app.init();
+  
 }
