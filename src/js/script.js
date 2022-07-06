@@ -207,7 +207,7 @@
           const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
           if(optionSelected) {
             // check if the option is not default
-            if(!option.default == true){
+            if(option.default !== true){
             // add option price to price variable
               price = option.price + price;
             }
@@ -230,9 +230,12 @@
           }
         }
       }
-      thisProduct.priceSingle = price;
+      
       /* multiply price by amount */
       price *= thisProduct.amountWidget.value;
+
+      thisProduct.priceSingle = price;
+      
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
