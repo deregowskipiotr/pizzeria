@@ -477,8 +477,8 @@
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
 
       for(let total of thisCart.dom.totalPrice) {
-         total.innerHTML = thisCart.totalPrice;
-       }
+        total.innerHTML = thisCart.totalPrice;
+      }
 
     }
 
@@ -546,6 +546,7 @@
       });
 
       thisCartProduct.dom.wrapper.dispatchEvent(event);
+      thisCartProduct.dom.wrapper.remove();
     }
 
     initActions() {
@@ -557,6 +558,7 @@
 
       thisCartProduct.dom.remove.addEventListener('click', function(event) {
         event.preventDefault();
+        thisCartProduct.remove(event);
       });
     }
   }
