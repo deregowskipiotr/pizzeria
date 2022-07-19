@@ -142,6 +142,8 @@
       
     }
 
+    
+
     initAccordion(){
       const thisProduct = this;
 
@@ -251,7 +253,7 @@
       thisProduct.priceElem.innerHTML = price;
       
     }
-  
+    
     initAmountWidget() {
       const thisProduct = this;
 
@@ -260,6 +262,7 @@
         thisProduct.processOrder();
       });
     }
+    
 
     addToCart() {
       const thisProduct = this;
@@ -281,14 +284,14 @@
     prepareCartProduct() {
       const thisProduct = this;
 
-      const productSummary = {};
-      productSummary.id = thisProduct.id;
-      productSummary.name = thisProduct.data.name;
-      productSummary.amount = thisProduct.amountWidget.value;
-      productSummary.priceSingle = thisProduct.priceSingle;
-      productSummary.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
-      productSummary.params = thisProduct.prepareCartProductParams();
-
+      const productSummary = {
+        id: thisProduct.id,
+        name: thisProduct.data.name,
+        amount: thisProduct.amountWidget.value,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.priceSingle * thisProduct.amountWidget.value,
+        params: thisProduct.prepareCartProductParams(),
+      };
       return productSummary;
 
     }
@@ -467,7 +470,6 @@
       for(let cartProduct of thisCart.products) {
         
         totalNumber += cartProduct.amount;
-        
         subtotalPrice += cartProduct.price;
       }
 
@@ -477,6 +479,7 @@
         thisCart.totalPrice = 0;
       }
 
+      
       //console.log('deliveryFee:', thisCart.deliveryFee);
       //console.log('totalNumber:', thisCart.totalNumber);
       //console.log('subtotalPrice:', thisCart.subtotalPrice);
@@ -505,10 +508,11 @@
       thisCart.products.splice(indexOfProduct, 1);        
       thisCart.update();
     }
+
     sendOrder() {
       const thisCart = this;
 
-      const url = settings.db.url+ '/' + settings.db.orders;
+      const url = settings.db.url + '/' + settings.db.orders;
 
       const payload = {
         address: thisCart.dom.address.value,
@@ -595,7 +599,7 @@
       });
 
       thisCartProduct.dom.wrapper.dispatchEvent(event);
-      thisCartProduct.dom.wrapper.remove();
+      
     }
 
     initActions() {
@@ -607,7 +611,7 @@
 
       thisCartProduct.dom.remove.addEventListener('click', function(event) {
         event.preventDefault();
-        thisCartProduct.remove(event);
+        thisCartProduct.remove();
       });
     }
 
@@ -622,6 +626,7 @@
         name: thisCartProduct.name,
         params: thisCartProduct.params,
       };
+      return prod;
     }
   }
 
@@ -636,7 +641,7 @@
       }
     },
 
-    initData: function(){
+    initData: function() {
       const thisApp = this;
   
       thisApp.data = {};
