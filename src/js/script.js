@@ -141,7 +141,15 @@
       thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
       
     }
+    
+    initAmountWidget() {
+      const thisProduct = this;
 
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function() {
+        thisProduct.processOrder();
+      });
+    }
     
 
     initAccordion(){
@@ -245,25 +253,17 @@
       }
       
       /* multiply price by amount */
+      thisProduct.priceSingle = price;
       price *= thisProduct.amountWidget.value;
 
-      thisProduct.priceSingle = price;
+      
       
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
       
     }
     
-    initAmountWidget() {
-      const thisProduct = this;
-
-      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', function() {
-        thisProduct.processOrder();
-      });
-    }
-    
-
+        
     addToCart() {
       const thisProduct = this;
 
@@ -291,7 +291,9 @@
         priceSingle: thisProduct.priceSingle,
         price: thisProduct.priceSingle * thisProduct.amountWidget.value,
         params: thisProduct.prepareCartProductParams(),
+
       };
+      //console.log('this.prepareCartProduct:', productSummary);
       return productSummary;
 
     }
@@ -473,9 +475,9 @@
         subtotalPrice += cartProduct.price;
       }
 
-      if(subtotalPrice > 0) {
+      if(subtotalPrice >0){
         thisCart.totalPrice = deliveryFee + subtotalPrice;
-      } else {
+      } else{
         thisCart.totalPrice = 0;
       }
 
@@ -485,9 +487,9 @@
       //console.log('subtotalPrice:', thisCart.subtotalPrice);
       //console.log('thisCart.totalPrice:', thisCart.totalPrice);
 
-      //thisCart.subtotalPrice = subtotalPrice;
-      //thisCart.totalNumber = totalNumber;
-      //thisCart.deliveryFee = deliveryFee;
+      thisCart.subtotalPrice = subtotalPrice;
+      thisCart.totalNumber = totalNumber;
+      thisCart.deliveryFee = deliveryFee;
       thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
       thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
       thisCart.dom.totalNumber.innerHTML = totalNumber;
@@ -561,6 +563,8 @@
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
       thisCartProduct.initActions();
+
+      //console.log('thisCartProduct:', thisCartProduct);
     }
 
     getElements(element) {
