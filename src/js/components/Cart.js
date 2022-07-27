@@ -1,7 +1,8 @@
 
-import {settings, select, classNames, templates} from './settings.js';
-import utils from './utils.js';
-import CartProduct from './components/CartProduct.js';
+import {select, classNames, templates, settings, } from '../settings.js';
+import utils from '../utils.js';
+import CartProduct from './CartProduct.js';
+
 
 class Cart {
   constructor(element) {
@@ -11,7 +12,7 @@ class Cart {
 
     thisCart.getElements(element);
     thisCart.initActions();
-    //console.log('new Cart', thisCart);
+    console.log('new Cart', thisCart);
   }
 
   getElements(element) {
