@@ -2,6 +2,7 @@
   "plugins": [
     "stylelint-scss"
   ],
+  
   "rules": {
     "block-no-empty": true,
     "color-no-invalid-hex": true,
@@ -22,4 +23,7 @@
     "scss/selector-no-redundant-nesting-selector": true,
     "scss/no-duplicate-dollar-variables": true
   }
-}
+} 
+    
+  
+

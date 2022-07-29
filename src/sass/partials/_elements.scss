@@ -10,6 +10,7 @@
 
 .btn-quantity {
   @include btn($color-dark, $color-light, $color-dark);
+
   vertical-align: top;
   padding: 0;
   width: 30px;
@@ -19,6 +20,7 @@
 
   &--lt {
     @include btn($color-light, $color-main, $color-light);
+
     padding: 0;
     width: 24px;
     height: 18px;
@@ -30,7 +32,8 @@
 
 /* Form elements */
 
-input, select {
+input,
+select {
   border: 1px solid $color-dark;
   border-radius: $radius;
   padding: $base-size;
@@ -39,6 +42,7 @@ input, select {
   &.error {
     border-color: $color-main;
   }
+
   // CODE ADDED END
 }
 
@@ -70,7 +74,7 @@ input, select {
     border: 1px solid $color-dark;
     border-radius: $radius;
 
-    &:after {
+    &::after {
       content: "";
       position: absolute;
       display: none;
@@ -82,14 +86,13 @@ input, select {
       top: 4px;
       left: 3px;
     }
-
   }
 
   &:hover input ~ .checkbox__checkmark {
     content: none;
   }
 
-  input:checked ~ .checkbox__checkmark:after {
+  input:checked ~ .checkbox__checkmark::after {
     display: block;
   }
 
@@ -97,7 +100,5 @@ input, select {
     .checkbox__checkmark {
       border-radius: 50%;
     }
-
   }
-
 }
