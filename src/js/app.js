@@ -2,6 +2,8 @@ import {settings, select, } from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
   
+
+
 const app = {
   initMenu: function() {
     const thisApp = this;
@@ -66,9 +68,11 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
   },
-};
 
   
+};
+
+
 
 app.init();
   
