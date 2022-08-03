@@ -110,13 +110,11 @@ const app = {
     });
   },
 
-  initBooking: function() {
+  initBooking: function(){
     const thisApp = this;
     const bookingWidget = document.querySelector(select.containerOf.booking);
     thisApp.widget = new Booking(bookingWidget);
   },
-
-    
 
   init: function(){
     const thisApp = this;
@@ -131,10 +129,7 @@ const app = {
     thisApp.initCart();
     thisApp.initBooking();
   },
-
-  
 };
-
 
 app.init();
   
