@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -21,6 +22,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
       </div>
@@ -62,6 +64,9 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div id="home-page" class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -69,6 +74,108 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+  
+  <script id="template-home-page" type="text/x-handlebars-template">
+    <div class="home-page-row wrapper">
+      <div class="home-row-small">
+        <div class="box-small home-order">
+          <a href="#order" class="button-link"><h3>ORDER ONLINE</h3></a>
+          <p>Delicious food delivered to your door</p>
+        </div>
+        <div class="box-small home-book">
+          <a href="#booking" class="button-link"><h3>BOOK A TABLE</h3></a>
+        </div>
+      </div>
+      <div class="home-row-big">
+        <div class="box-big">
+          <h3>OPENING HOURS:</h3>
+          <h4>TUE-SUN, 12PM-11PM</h4>
+        </div>
+      </div>
+    </div>
+    <div class="main-carousel">
+      <div class="carousel-cell">
+        <div class="carousel-img">
+          <img src="https://i.postimg.cc/KzGVHqRN/pizza-3.jpg" alt="recomendation">
+        </div>
+        <div class="opinion">
+          <h4 class="opinion-title">GREAT VENUE</h4>
+          <p class="opinion-description">Absolutely amazing place to spend time with friends and family</p>
+          <p class="opinion-name">John Smith</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="carousel-img">
+          <img src="https://i.postimg.cc/nhMwBjNd/pizza-5.jpg" alt="recomendation">
+        </div>
+        <div class="opinion">
+          <h4 class="opinion-title">DELICIOUS FOOD</h4>
+          <p class="opinion-description">Simple and tasty. I recommend it to all Italian food fans</p>
+          <p class="opinion-name">Mary Smith</p>
+        </div>
+      </div>
+      <div class="carousel-cell">
+        <div class="carousel-img">
+          <img src="https://i.postimg.cc/W1n0nTJh/pizza-7.jpg" alt="recomendation">
+        </div>
+        <div class="opinion">
+          <h4 class="opinion-title">GREAT TIME</h4>
+          <p class="opinion-description">Amazing place for a family or friends meeting</p>
+          <p class="opinion-name">Jerry Springer</p>
+        </div>
+      </div>
+    </div>  
+    <div class="image-gallery">
+      <div class="gallery-row">
+        <div class="image-box">
+          <img src="https://i.postimg.cc/524j3vJM/pizza-1.jpg" alt="image-pizza">
+          <div class="icon-wrapper">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img src="https://i.postimg.cc/L4xW5FsB/pizza-2.jpg" alt="image-pizza">
+          <div class="icon-wrapper">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img src="https://i.postimg.cc/SKGrPc27/pizza-4.jpg" alt="image-pizza">
+          <div class="icon-wrapper">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-row">
+        <div class="image-box">
+           <img src="https://i.postimg.cc/4yHpXcd0/pizza-6.jpg" alt="image-pizza">
+           <div class="icon-wrapper">
+             <a href="#"><i class="fas fa-heart"></i></a>
+             <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+         </div>
+         <div class="image-box">
+           <img src="https://i.postimg.cc/PrkMd6Wz/pizza-8.jpg" alt="image-pizza">
+           <div class="icon-wrapper">
+             <a href="#"><i class="fas fa-heart"></i></a>
+             <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+         </div>
+         <div class="image-box">
+           <img src="https://i.postimg.cc/sfJMZwFJ/pizza-9.jpg" alt="image-pizza">
+           <div class="icon-wrapper">
+             <a href="#"><i class="fas fa-heart"></i></a>
+             <a href="#"><i class="fas fa-share-alt"></i></a>
+           </div>
+         </div>
+      </div>
+    <footer class="instagram">
+      <a class="instagram" href="#"><p>View more on Instagram</p></a>
+    </footer>
+  </script>
 
   <script id="template-cart-product" type="text/x-handlebars-template">
     <li>
@@ -242,6 +349,7 @@
     </div>
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="vendor\range-slider.min.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="js/app.js" type="module"></script>

@@ -51,7 +51,7 @@ select {
   position: relative;
   padding-left: ($base-size * 2);
   margin-bottom: $base-size;
-  user-select: none;
+  //user-select: none;
 
   label {
     cursor: pointer;
