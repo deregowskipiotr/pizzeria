@@ -157,7 +157,7 @@
         border-radius: 50%;
       }
     }
-
+    
     &.booked {
       cursor: not-allowed;
       color: lighten($color-dark, 40%);
@@ -169,10 +169,27 @@
         height: 100%;
         left: 0;
         top: 0;
-        background: $color-dark;
+        background: red;
         opacity: 0.4;
       }
     }
+
+    &.selected {
+      background: lightgreen;
+                  
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: lightgreen, 50%;
+        opacity: 0.4;
+      }
+    }
+
+    
   }
 
   [data-table="1"] {

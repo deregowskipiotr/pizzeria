@@ -207,7 +207,7 @@
 
     "orders": [],
 
-    "events": [
+    "event": [
       {
         "id": 1,
         "date": "2022-01-01",
@@ -260,7 +260,7 @@
       }
     ],
 
-    "bookings": []
+    "booking": []
    
  }
  

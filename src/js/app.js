@@ -13,7 +13,7 @@ const app = {
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
 
     const idFromHash = window.location.hash.replace('#/', '');
-    console.log('idFromHash:', idFromHash);
+    //console.log('idFromHash:', idFromHash);
 
     let pageMatchingHash = thisApp.pages[0].id;
 
@@ -64,7 +64,7 @@ const app = {
   initMenu: function() {
     const thisApp = this;
 
-    console.log('thisApp.data:', thisApp.data);
+    //console.log('thisApp.data:', thisApp.data);
 
     for(let productData in thisApp.data.products){
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
@@ -112,8 +112,8 @@ const app = {
 
   initBooking: function(){
     const thisApp = this;
-    const bookingWidget = document.querySelector(select.containerOf.booking);
-    thisApp.widget = new Booking(bookingWidget);
+    const bookingContainer = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking(bookingContainer);
   },
 
   init: function(){
