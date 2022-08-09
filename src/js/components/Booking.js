@@ -12,8 +12,7 @@ class Booking {
     thisBooking.initWidgets();
     thisBooking.getData();
     thisBooking.tableSelected = null;
-    //thisBooking.initClear();
-    //console.log(thisBooking.selectedTable);
+    
     
     
   }
