@@ -196,14 +196,14 @@ class Booking {
     
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
-      console.log('updated');
+      //console.log('updated');
 
       /* */
       for(let table of thisBooking.dom.tables) {
         table.classList.remove(classNames.booking.tableSelected);
         thisBooking.tableSelected = null;
       }
-      console.log('tableSelected');
+      //console.log('tableSelected');
     });
 
     /* NEW start initTables when there's a click on tablesContainer */
