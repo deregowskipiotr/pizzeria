@@ -24,7 +24,7 @@ const app = {
         break;
       }
     }
-
+    
     thisApp.activatePage(pageMatchingHash);
 
     for(let link of thisApp.navLinks) {

@@ -18,9 +18,7 @@ class Home {
     thisHome.dom.wrapper = element;
     thisHome.dom.wrapper.innerHTML = generatedHTML;
 
-    thisHome.dom.wrapper.carouselWidget = thisHome.dom.wrapper.querySelector(select.widgets.carousel.wrapper);
-    thisHome.dom.wrapper.onlineOrder = thisHome.dom.wrapper.querySelector(select.home.onlineOrder);
-    thisHome.dom.wrapper.bookTable = thisHome.dom.wrapper.querySelector(select.home.bookTable);
+    
   }
 
   initCarousel(){
@@ -38,41 +36,44 @@ class Home {
     });
   }
 
-  activatePage(pageId){
-
-    const pages = document.querySelector(select.containerOf.pages).children;
-    const navLinks = document.querySelectorAll(select.nav.links);
-
-    for(const page of pages){
-      if(page.id !== pageId){
-        page.classList.remove(classNames.pages.active);
-      }else{
-        page.classList.add(classNames.pages.active);
-      }
-    }
-
-    for(const navLink of navLinks){
-      if(!navLink.href.includes(pageId)){
-        navLink.classList.remove(classNames.pages.active);
-      }else{
-        navLink.classList.add(classNames.pages.active);
-
-      }
-    }
-    window.location.hash = '#/' + '/pageId';
-  }
-
-  initLink(){
+  initLink() {
     const thisHome = this;
-    thisHome.dom.wrapper.onlineOrder.addEventListener('click', function(event){
-      event.preventDefault();
-      thisHome.activatePage('order');
-    });
 
-    thisHome.dom.wrapper.bookTable.addEventListener('click', function(event){
-      event.preventDefault();
-      thisHome.activatePage('booking');
-    });
+    thisHome.homeLinks = document.querySelectorAll(select.nav.homeLinks);
+    thisHome.pages = document.querySelector(select.containerOf.pages).children;
+    thisHome.navLinks = document.querySelectorAll(select.nav.links);
+    //console.log(thisHome.homeLinks);
+
+    for (let link of thisHome.homeLinks) {
+      // console.log(link);
+      link.addEventListener('click', function (event) {
+        event.preventDefault;
+
+        const clickedElement = this;
+        const id = clickedElement.getAttribute('href').replace('#', '');
+        
+        /*run thisHome.activatePage with that id*/
+        thisHome.activatePage(id);
+        /*change URL hash*/
+        window.location.hash = '#/' + id;
+      });
+    }
+  }
+  activatePage(pageId) {
+    const thisHome = this;
+
+    for (let page of thisHome.pages) {
+      page.classList.toggle(classNames.pages.active, page.id == pageId);
+    }
+
+
+    for (let link of thisHome.navLinks) {
+      link.classList.toggle(
+        classNames.nav.active,
+        link.getAttribute('href') == '#' + pageId
+      );
+
+    } 
   }
 }
 

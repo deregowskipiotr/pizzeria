@@ -57,6 +57,7 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
+    homeLinks: '.box',
   },
     
   cart: {

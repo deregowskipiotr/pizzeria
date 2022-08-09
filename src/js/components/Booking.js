@@ -11,7 +11,8 @@ class Booking {
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
-    thisBooking.tableSelected;
+    thisBooking.tableSelected = null;
+    //thisBooking.initClear();
     //console.log(thisBooking.selectedTable);
     
     
@@ -195,6 +196,14 @@ class Booking {
     
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
+      console.log('updated');
+
+      /* */
+      for(let table of thisBooking.dom.tables) {
+        table.classList.remove(classNames.booking.tableSelected);
+        thisBooking.tableSelected = null;
+      }
+      console.log('tableSelected');
     });
 
     /* NEW start initTables when there's a click on tablesContainer */
@@ -225,7 +234,7 @@ class Booking {
         alert('TABLE IS ALREADY BOOKED');
 
         /* if it's not booked */
-      }else{
+      }else {
 
         /*for every table - if it contains class selected and it's not a clicked element - remove class selected */
         for(const table of thisBooking.dom.tables){
@@ -233,10 +242,16 @@ class Booking {
             table.classList.remove(classNames.booking.tableSelected);
           }
         }
-  
         /* other way - the table is selected - add class selected */
-        thisBooking.tableSelected = tableId;
-        clickedElement.classList.add(classNames.booking.tableSelected);
+        if(tableId !== thisBooking.tableSelected ) {
+          clickedElement.classList.add(classNames.booking.tableSelected);
+          thisBooking.tableSelected = tableId;
+        } else { thisBooking.tableSelected = null; 
+          clickedElement.classList.remove(classNames.booking.tableSelected
+          );}
+         
+        console.log('thisBooking.tableSelected', thisBooking.tableSelected);
+
       }
     }
   }
